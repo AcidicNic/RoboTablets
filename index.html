@@ -57,7 +57,7 @@
                                 <span>I want to take </span>
                             </div>
                             <div class="col-xs-1 w-25">
-                                <input class="form-control form-control-sm input-sm border-trans bg-transparent change" type="text" id="HBr-mg" placeholder="your dose">
+                                <input class="form-control form-control-sm input-sm border-trans bg-transparent change" type="text" id="HBr-mg" placeholder="dose">
                             </div>
                             <div class="col-xs-3">
                                 <span>mg of DXM HBr.</span>
@@ -71,8 +71,8 @@
                     To get the desired effect of <span id="mg-input">?</span>mg HBr you would have to take:<br>
                     <span class="font-weight-bold"><span id="mg">?</span>mg of freebase DXM (<span id="roboTablets">?</span> RoboTablets)<br><br></span>
                         So you could take:<br>
-                        <span class="font-weight-bold"><span id="roboTablets-lower">?</span> RoboTablets (<span id="roboTablets-lower-mg">?</span>mg)</span> or
-                        <span class="font-weight-bold"><span id="roboTablets-upper">?</span> RoboTablets (<span id="roboTablets-upper-mg">?</span>mg)</span>
+                        <span class="font-weight-bold"><span id="roboTablets-lower">?</span> RoboTablets (<span id="roboTablets-lower-mg">?</span>mg freebase ≈ <span id="roboTablets-lower-hbr">?</span> mg HBr)</span> <br>or<br>
+                        <span class="font-weight-bold"><span id="roboTablets-upper">?</span> RoboTablets (<span id="roboTablets-upper-mg">?</span>mg freebase ≈ <span id="roboTablets-upper-hbr">?</span> mg HBr)</span>
             </div>
         </div>
     </div>
@@ -105,6 +105,9 @@
 
         $("#roboTablets-lower-mg").text("?");
         $("#roboTablets-upper-mg").text("?");
+
+        $("#roboTablets-lower-hbr").text("?");
+        $("#roboTablets-upper-hbr").text("?");
     }
 
     $("#HBr-mg").keyup(function() {
@@ -119,9 +122,11 @@
 
                 $("#roboTablets-lower").text(Math.floor(fbDose/30));
                 $("#roboTablets-lower-mg").text(Math.floor(fbDose/30)*30);
+                $("#roboTablets-lower-hbr").text(Math.round((Math.floor(fbDose/30)*30) * 1.37));
 
                 $("#roboTablets-upper").text(Math.ceil(fbDose/30));
                 $("#roboTablets-upper-mg").text(Math.ceil(fbDose/30)*30);
+                $("#roboTablets-upper-hbr").text(Math.round((Math.ceil(fbDose/30)*30) * 1.37));
             } else {
                 clearResult();
             }
